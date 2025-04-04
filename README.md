@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# Olympic Medal Count App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive application that displays Olympic medal results during the games, showing up to 10 countries that have won the most medals of a given kind in the Olympics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Display countries ranked by gold, silver, bronze, or total medals
+- Custom sorting rules with proper tiebreakers:
+  - When ranking by total medals, ties are broken by most gold
+  - When ranking by gold, ties are broken by most silver
+  - When ranking by silver, ties are broken by most gold
+  - When ranking by bronze, ties are broken by most gold
+- URL parameter support for persistent sorting (`?sort=gold`, `?sort=silver`, etc.)
+- Visual indicator for selected sort column
+- Client-side sorting without refetching data
+- Error handling for production scenarios
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 18
+- TypeScript
+- CSS3
+- Vite
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Implementation Details
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Reusable Components**: Modular design with focused components
+- **Type Safety**: Comprehensive TypeScript interfaces and types
+- **Custom Hooks**: Encapsulated URL parameter management
+- **Utility Functions**: Separate logic for sorting and data manipulation
+- **Constants**: Configuration separated from implementation
+- **Service Layer**: Abstracted API calls for better testability
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Running Locally
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
 ```

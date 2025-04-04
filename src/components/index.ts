@@ -1,2 +1,2 @@
-// Export components for easier imports
-// TODO: Add component exports as they are implemented
+export { default as CountryFlag } from "./CountryFlag";
+export { default as MedalTable } from "./MedalTable";

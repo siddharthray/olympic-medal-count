@@ -1,2 +1,5 @@
-/* Styles for CountryFlag component */
-/* TODO: Add styling for flags */
+.country-flag {
+    display: inline-block;
+    background-repeat: no-repeat;
+    border: 1px solid #eee;
+}
